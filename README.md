@@ -1,2 +1,3 @@
 # vsgcoin
-A Blockchain and a new Cryptocurrency with Typescript
+## *A Blockchain and a new Cryptocurrency with Typescript* :stars:
+
