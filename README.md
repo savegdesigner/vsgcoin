@@ -2,7 +2,7 @@
 ## *A Blockchain and a new Cryptocurrency with Typescript* 
 
 
-### Application
+### Application development
 - [ ] Blockchain
 - [ ] Blocks
 - [ ] Mining
