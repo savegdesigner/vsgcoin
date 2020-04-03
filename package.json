@@ -1,0 +1,26 @@
+{
+  "name": "vsgcoin",
+  "version": "1.0.0",
+  "description": "Blockchain with typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savegdesigner/vsgcoin.git"
+  },
+  "keywords": [],
+  "author": "Vinicius Savegnago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savegdesigner/vsgcoin/issues"
+  },
+  "homepage": "https://github.com/savegdesigner/vsgcoin#readme",
+  "devDependencies": {
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
