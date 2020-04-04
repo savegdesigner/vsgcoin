@@ -4,6 +4,6 @@
 
 ### Application development
 - [ ] Blockchain
-- [ X ] Blocks
+- [X] Blocks
 - [ ] Mining
 - [ ] Production
