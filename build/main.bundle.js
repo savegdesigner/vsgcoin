@@ -1866,7 +1866,19 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar sha256 = __webpack_require__(/*! crypto-js/sha256 */ \"./node_modules/crypto-js/sha256.js\");\r\nvar Block = /** @class */ (function () {\r\n    function Block(index, data) {\r\n        this.timeStamp = new Date();\r\n        this.hash = this.generateHash();\r\n        this.index = index;\r\n        this.data = data;\r\n    }\r\n    Block.prototype.generateHash = function () {\r\n        return (sha256(this.index + this.previousHash + JSON.stringify(this.data) + this.timeStamp)).toString();\r\n    };\r\n    return Block;\r\n}());\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Block);\r\n\n\n//# sourceURL=webpack:///./src/Block.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar sha256 = __webpack_require__(/*! crypto-js/sha256 */ \"./node_modules/crypto-js/sha256.js\");\r\nvar Block = /** @class */ (function () {\r\n    function Block(index, previousHash, data) {\r\n        this.timeStamp = new Date();\r\n        this.hash = this.generateHash();\r\n        this.index = index;\r\n        this.data = data;\r\n        this.previousHash = previousHash;\r\n    }\r\n    Block.prototype.generateHash = function () {\r\n        return (sha256(this.index + this.previousHash + JSON.stringify(this.data) + this.timeStamp)).toString();\r\n    };\r\n    return Block;\r\n}());\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Block);\r\n\n\n//# sourceURL=webpack:///./src/Block.ts?");
+
+/***/ }),
+
+/***/ "./src/Blockchain.ts":
+/*!***************************!*\
+  !*** ./src/Blockchain.ts ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Block__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Block */ \"./src/Block.ts\");\n\r\nvar Blockchain = /** @class */ (function () {\r\n    function Blockchain(index) {\r\n        this.blocks = [];\r\n        this.index = index;\r\n    }\r\n    Blockchain.prototype.getLastBlock = function () {\r\n        return this.blocks[this.blocks.length - 1];\r\n    };\r\n    Blockchain.prototype.addBlock = function (data) {\r\n        var index = this.index;\r\n        var previousHash = this.getLastBlock().hash;\r\n        var block = new _Block__WEBPACK_IMPORTED_MODULE_0__[\"default\"](index, previousHash, data);\r\n        this.index++;\r\n        this.blocks.push(block);\r\n    };\r\n    Blockchain.prototype.chainInit = function () {\r\n        var index = this.index;\r\n        var firstHash = '';\r\n        var firstData = {};\r\n        var firstBlock = new _Block__WEBPACK_IMPORTED_MODULE_0__[\"default\"](index, firstHash, firstData);\r\n        this.blocks.push(firstBlock);\r\n        this.index++;\r\n    };\r\n    return Blockchain;\r\n}());\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (Blockchain);\r\n\n\n//# sourceURL=webpack:///./src/Blockchain.ts?");
 
 /***/ }),
 
@@ -1878,7 +1890,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nvar sha256 = __webpack_requir
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Block__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Block */ \"./src/Block.ts\");\n\r\nvar firstBlockData = { \"id\": 123, \"data\": \"First Block data\" };\r\nvar FirstBlock = new _Block__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1, firstBlockData);\r\nconsole.log(FirstBlock.hash);\r\n\n\n//# sourceURL=webpack:///./src/main.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Blockchain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Blockchain */ \"./src/Blockchain.ts\");\n\r\nvar firstBlockchain = new _Blockchain__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1);\r\nvar data = { data: 'test' };\r\nfirstBlockchain.chainInit();\r\nfirstBlockchain.addBlock(data);\r\nconsole.log(firstBlockchain);\r\n\n\n//# sourceURL=webpack:///./src/main.ts?");
 
 /***/ }),
 

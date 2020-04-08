@@ -1,6 +1,11 @@
 import Block from './Block'
+import Blockchain from './Blockchain'
 
-const firstBlockData = { "id": 123, "data": "First Block data" }
-const FirstBlock: Block = new Block(1, firstBlockData)
+const firstBlockchain = new Blockchain(1)
 
-console.log(FirstBlock.hash)
+let data = {data: 'test'}
+
+firstBlockchain.chainInit()
+firstBlockchain.addBlock(data)
+
+console.log(firstBlockchain)

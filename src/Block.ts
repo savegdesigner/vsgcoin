@@ -8,10 +8,11 @@ class Block {
     public hash: string = this.generateHash()
     public previousHash: string
 
-    constructor(index: number, data: object){
+    constructor(index: number, previousHash: string, data: object){
         this.index = index
         this.data = data
-
+        this.previousHash = previousHash
+        
     }
 
     generateHash(): string{
